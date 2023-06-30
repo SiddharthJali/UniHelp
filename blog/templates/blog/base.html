@@ -38,8 +38,11 @@
                     </div>
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
-                        {% if user.is_authenticated %}
+                        {% if user.is_authenticated and user.profile.role == 'Alumni' %}
                             <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+                            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                        {% elif user.is_authenticated and user.profile.role == 'Student' %}
                             <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                             <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                         {% else %}
