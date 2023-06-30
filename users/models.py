@@ -4,6 +4,7 @@ from PIL import Image
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=10, default='Alumni')
     image = models.ImageField(default='default.png', upload_to='profile_pics')
 
     def __str__(self):

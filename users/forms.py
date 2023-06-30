@@ -9,6 +9,16 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+    
+    CHOICES = [
+        ('1', 'Alumni'),
+        ('2', 'Student'),
+    ]
+    role = forms.ChoiceField(
+        widget=forms.RadioSelect,
+        choices=CHOICES, 
+    ) 
+
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
