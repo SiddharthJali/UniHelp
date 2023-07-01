@@ -24,9 +24,25 @@
             <hr>
             <h5>Minimum qualifications</h5>
             <p class="article-content">{{ post.content }}</p>
+
             {% if user.is_authenticated and user.profile.role == 'Student' %}
+            {% if post.has_submitted_form %}
+            <h1>You have already submitted the form for post {{ post.title }}.</h1>
+            <!-- Add disabled class to disable the button -->
+            <a class="btn btn-primary custom-btn disabled">Apply Now</a>
+            {% else %}
+            <h1>Your form for post {{ post.title }} has been submitted successfully!</h1>
             <a href="{% url 'apply-form' post.id %}" class="btn btn-primary custom-btn">Apply Now</a>
             {% endif %}
+            {% endif %}
+
+            <!-- {% if user.is_authenticated and user.profile.role == 'Student' %}
+            {% if user.has_submitted_form %}
+            <h1 class="">You have already submitted the form.</h1>
+            {% else %}
+            <a href="{% url 'apply-form' post.id %}" class="btn btn-primary custom-btn">Apply Now</a>
+            {% endif %}
+            {% endif %} -->
         </div>
     </div>
     &nbsp;

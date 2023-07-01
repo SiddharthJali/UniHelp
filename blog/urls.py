@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, ContactView, AppliedView
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, ContactView, AppliedView, FormSuccessView
 from . import views
 
 urlpatterns = [
@@ -12,7 +12,8 @@ urlpatterns = [
     path('about/', views.about, name='blog-about'),
     path('', views.solutionFinder, name='solutionFinder'),
     path('contact/', ContactView.as_view(), name='contact-form'),
-    path('apply/<int:pk>/', AppliedView.as_view(), name='apply-form'),
+    path('post/<int:pk>/apply/', AppliedView.as_view(), name='apply-form'),
+    path('form-success/', FormSuccessView.as_view(), name='form-success'),
     path('event/', views.event, name='event'),
     path('resource/', views.resource, name='resource'),
 ]

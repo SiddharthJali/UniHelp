@@ -6,6 +6,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=10, default='Alumni')
     image = models.ImageField(default='default.png', upload_to='profile_pics')
+    has_submitted_form = models.ManyToManyField('blog.Post', blank=True)  # Import Post model from your app
 
     def __str__(self):
         return f'{self.user.username} Profile'
