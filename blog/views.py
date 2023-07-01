@@ -22,6 +22,13 @@ class PostListView(LoginRequiredMixin, ListView):
     ordering = ['-date_posted']
     paginate_by = 6
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated and self.request.user.profile.role == 'Student':
+            submitted_posts = AppliedSubmission.objects.filter(author=self.request.user).values_list('post_id', flat=True)
+            context['submitted_posts'] = submitted_posts
+        return context
+
 class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html' # <app>/<model>_<viewtype>.html
