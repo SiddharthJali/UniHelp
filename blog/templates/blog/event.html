@@ -190,9 +190,11 @@
             </div>
         </nav>
     </header>
-    <div >
-      <center><h1>Events and Workshop</h1></center>
-        
+    <div>
+        <center>
+            <h1>Events and Workshop</h1>
+        </center>
+
 
     </div>
     <br>
@@ -296,7 +298,7 @@
 
     </div>
     <br>
-    <footer>
+    <!-- <footer>
 
         <ul class="social_icon">
             <li><a href=""><ion-icon name="logo-instagram"></ion-icon></a></li>
@@ -311,6 +313,25 @@
             <li><a href="{% url 'contact-form' %}">Contact us</a></li>
         </ul>
         <p>© 2023 | All Rights Reserved</p>
+    </footer> -->
+    <footer class="site-footer">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark bottom-0">
+            <div class="container">
+                <ul class="social_icon">
+                    <li><a href=""><ion-icon name="logo-instagram"></ion-icon></a></li>
+                    <li><a href="#"><ion-icon name="logo-youtube"></ion-icon></a></li>
+                    <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                    <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+
+                </ul>
+                <ul class="menu">
+                    <li><a href="{% url 'blog-home' %}">Home</a></li>
+                    <li><a href="{% url 'blog-about' %}">About</a></li>
+                    <li><a href="{% url 'contact-form' %}">Contact us</a></li>
+                </ul>
+                <p>© 2023 | All Rights Reserved</p>
+            </div>
+        </nav>
     </footer>
 </body>
 

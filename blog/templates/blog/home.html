@@ -24,7 +24,9 @@
             <hr>
             <h5>Minimum qualifications</h5>
             <p class="article-content">{{ post.content }}</p>
+            {% if user.is_authenticated and user.profile.role == 'Student' %}
             <a href="#" class="btn btn-primary custom-btn">Apply Now</a>
+            {% endif %}
         </div>
     </div>
     &nbsp;
@@ -57,13 +59,13 @@
 
 {% block palate %}
 <div class="content-section">
-    <h3>Our Sidebar</h3>
-    <p class='text-muted'>You can put any information here you'd like.
+    <h3>Top Companies</h3>
+    <p class='text-muted'>Hightest package giving companies
     <ul class="list-group">
-        <li class="list-group-item list-group-item-light">Latest Posts</li>
-        <li class="list-group-item list-group-item-light">Announcements</li>
-        <li class="list-group-item list-group-item-light">Calendars</li>
-        <li class="list-group-item list-group-item-light">etc</li>
+        <li class="list-group-item list-group-item-light">Google</li>
+        <li class="list-group-item list-group-item-light">Microsoft</li>
+        <li class="list-group-item list-group-item-light">OpenAI</li>
+        <li class="list-group-item list-group-item-light">Amazon</li>
     </ul>
     </p>
 </div>
