@@ -19,13 +19,20 @@
     {% else %}
     <title>Solution Finder</title>
     {% endif %}
+
+    {% comment %} <style>
+        {% comment %} .btn-primary.custom-btn {
+            background-color: #000;
+            border-color: #000;
+        } {% endcommenttext %}
+    </style> {% endcomment %}
 </head>
 
 <body>
     <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand mr-4" href="{% url 'solutionFinder' %}">Solution Finder</a>
+                <a class="navbar-brand mr-4" href="{% url 'solutionFinder' %}">UNI HELP</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,19 +42,21 @@
                         <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
                         <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
                         <a class="nav-item nav-link" href="{% url 'contact-form' %}">Contact</a>
+                        <a class="nav-item nav-link" href="{% url 'event' %}">Event</a>
+                        <a class="nav-item nav-link" href="{% url 'resource' %}">Resource</a>
                     </div>
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
                         {% if user.is_authenticated and user.profile.role == 'Alumni' %}
-                            <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
-                            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-item nav-link nav-hover" href="{% url 'post-create' %}">New Post</a>
+                        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                         {% elif user.is_authenticated and user.profile.role == 'Student' %}
-                            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                         {% else %}
-                            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
                         {% endif %}
                     </div>
                 </div>
@@ -58,13 +67,16 @@
         <div class="row">
             <div class="col-md-8">
                 {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
                 {% endif %}
                 {% block content %}{% endblock %}
+            </div>
+            <div class="col-md-4">
+                {% block palate %}{% endblock %}
             </div>
         </div>
     </main>

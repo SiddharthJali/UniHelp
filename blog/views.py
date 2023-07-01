@@ -71,6 +71,12 @@ def about(request):
 def solutionFinder(request):
     return render(request, 'blog/solutionFinder.html', {'title': 'Home'})
 
+def event(request):
+    return render(request, 'blog/event.html', {'title': 'Event'})
+
+def resource(request):
+    return render(request, 'blog/resource.html', {'title': 'resource'})
+
 class ContactView(LoginRequiredMixin, CreateView):
     model = ContactSubmission
     fields = ['name', 'email', 'message']

@@ -12,4 +12,6 @@ urlpatterns = [
     path('about/', views.about, name='blog-about'),
     path('', views.solutionFinder, name='solutionFinder'),
     path('contact/', ContactView.as_view(), name='contact-form'),
+    path('event/', views.event, name='event'),
+    path('resource/', views.resource, name='resource'),
 ]
