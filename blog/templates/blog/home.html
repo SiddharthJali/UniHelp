@@ -29,7 +29,7 @@
             {% if post.id in submitted_posts %}
             <!-- <h1>You have already submitted the form for post {{ post.title }}.</h1> -->
             <!-- Add disabled class to disable the button -->
-            <a class="btn btn-primary custom-btn disabled">Apply Now</a>
+            <a class="btn btn-primary custom-btn disabled">Applied!</a>
             {% else %}
             <!-- <h1>Your form for post {{ post.title }} has been submitted successfully!</h1> -->
             <a href="{% url 'apply-form' post.id %}" class="btn btn-primary custom-btn">Apply Now</a>
