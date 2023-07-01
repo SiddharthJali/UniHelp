@@ -25,7 +25,7 @@
             <h5>Minimum qualifications</h5>
             <p class="article-content">{{ post.content }}</p>
             {% if user.is_authenticated and user.profile.role == 'Student' %}
-            <a href="#" class="btn btn-primary custom-btn">Apply Now</a>
+            <a href="{% url 'apply-form' post.id %}" class="btn btn-primary custom-btn">Apply Now</a>
             {% endif %}
         </div>
     </div>

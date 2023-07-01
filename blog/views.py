@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, ContactSubmission
+from .models import Post, ContactSubmission, AppliedSubmission
 
 
 def home(request):
@@ -75,7 +75,7 @@ def event(request):
     return render(request, 'blog/event.html', {'title': 'Event'})
 
 def resource(request):
-    return render(request, 'blog/resource.html', {'title': 'resource'})
+    return render(request, 'blog/resource.html', {'title': 'Resource'})
 
 class ContactView(LoginRequiredMixin, CreateView):
     model = ContactSubmission
@@ -87,3 +87,16 @@ class ContactView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
+class AppliedView(LoginRequiredMixin, CreateView):
+    model = AppliedSubmission
+    fields = ['name', 'email', 'phone', 'skills', 'address']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
