@@ -4,7 +4,7 @@ from PIL import Image
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    role = models.CharField(max_length=10, default='Alumni')
+    role = models.CharField(max_length=10, default='Student')
     image = models.ImageField(default='default.png', upload_to='profile_pics')
     has_submitted_form = models.ManyToManyField('blog.Post', blank=True)  # Import Post model from your app
 
